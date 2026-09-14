@@ -1,0 +1,9 @@
+{
+  "paradigm": "diffusion",
+  "domain": "harmonic",
+  "context": 5,
+  "trained_newton": 0.9999999999994587,
+  "trained_kepler": 0.9382421080326079,
+  "untrained_newton": 0.9999999999997125,
+  "untrained_kepler": -0.0008768699689039039
+}

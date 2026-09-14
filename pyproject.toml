@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "physwm"
+version = "0.1.0"
+description = "Physics world-models: do learning paradigms (AR / diffusion / flow / drifting) decide curve-fitter vs physicist?"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# torch is installed separately from the aarch64/GH200 CUDA index (see scripts/env_setup.sh)
+torch = ["torch>=2.4"]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+include = ["physwm*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

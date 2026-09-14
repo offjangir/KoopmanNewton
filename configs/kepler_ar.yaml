@@ -1,0 +1,42 @@
+name: kepler-ar
+data:
+  domain: kepler
+  n_train: 4000
+  n_val: 400
+  n_test: 1000
+  n_steps: 100
+  dt: 0.2
+  context: 8            # temporal-locality knob (small -> Newtonian regime)
+  horizon: 1
+  ood_regimes: []       # [] -> auto (all non-default regimes: ecc_extrap, axis_extrap)
+  normalize: true
+  seed: 0
+  data_root: data_cache
+model:
+  kind: ar_transformer
+  d_model: 128
+  n_layers: 4
+  n_heads: 4
+  d_ff: 256
+  dropout: 0.0
+  attn_window: 2        # temporal locality: attend to current + previous state
+  head: regression      # spatial-smoothness bias ON
+  n_bins: 512
+  bin_range: 8.0
+method:
+  kind: ar
+  ctx_noise_sigma: 0.1  # stability bias (noisy-context training)
+train:
+  steps: 20000
+  batch_size: 256
+  lr: 1.0e-3
+  weight_decay: 0.0
+  grad_clip: 1.0
+  warmup: 200
+  amp: true
+  log_every: 100
+  eval_every: 2000
+  ckpt_every: 5000
+  device: cuda
+  seed: 0
+  out_dir: runs/kepler-ar

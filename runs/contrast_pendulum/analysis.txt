@@ -1,0 +1,17 @@
+ar_s0.0              step=  10000 probe_excess=+1.000  force_term_R2=+1.0000  model/linear=0.0057
+flow_s0.0            step=  10000 probe_excess=+1.000  force_term_R2=+0.9997  model/linear=0.0186
+diffusion_s0.0       step=  10000 probe_excess=+1.000  force_term_R2=+0.9993  model/linear=0.0271
+ar_s0.1              step=  10000 probe_excess=+1.000  force_term_R2=-0.0613  model/linear=1.0302
+flow_s0.1            step=  10000 probe_excess=+1.000  force_term_R2=-10.2861  model/linear=3.3595
+diffusion_s0.1       step=  10000 probe_excess=+1.000  force_term_R2=-13.5694  model/linear=3.8170
+
+====================================================================================
+run                     ctx  probe_excess   behaviour                metric
+ar_s0.0                   2        +1.000      +1.000         force_term_r2
+flow_s0.0                 2        +1.000      +1.000         force_term_r2
+diffusion_s0.0            2        +1.000      +0.999         force_term_r2
+ar_s0.1                   2        +1.000      -0.061         force_term_r2
+flow_s0.1                 2        +1.000     -10.286         force_term_r2
+diffusion_s0.1            2        +1.000     -13.569         force_term_r2
+
+-> runs/probe_vs_behavior.json

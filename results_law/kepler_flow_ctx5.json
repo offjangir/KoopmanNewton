@@ -1,0 +1,9 @@
+{
+  "paradigm": "flow",
+  "domain": "kepler",
+  "context": 5,
+  "trained_newton": 0.8394132379703003,
+  "trained_kepler": 0.8581073724446018,
+  "untrained_newton": 0.17136584980592295,
+  "untrained_kepler": 0.21288085399160905
+}

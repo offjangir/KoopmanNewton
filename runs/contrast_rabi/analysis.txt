@@ -1,0 +1,17 @@
+ar_s0.0              step=  10000 probe_excess=+0.983  conservation=+0.963  drift=0.00194 (floor 2.09e-08)
+flow_s0.0            step=  10000 probe_excess=+0.442  conservation=+0.889  drift=0.00624 (floor 2.09e-08)
+diffusion_s0.0       step=  10000 probe_excess=-0.493  conservation=+0.874  drift=0.00724 (floor 2.09e-08)
+ar_s0.1              step=  10000 probe_excess=+0.884  conservation=+0.920  drift=0.00436 (floor 2.09e-08)
+flow_s0.1            step=  10000 probe_excess=+0.721  conservation=+0.974  drift=0.00132 (floor 2.09e-08)
+diffusion_s0.1       step=  10000 probe_excess=+0.702  conservation=+0.953  drift=0.00246 (floor 2.09e-08)
+
+====================================================================================
+run                     ctx  probe_excess   behaviour                metric
+ar_s0.0                   2        +0.983      +0.963invariant_conservation
+flow_s0.0                 2        +0.442      +0.889invariant_conservation
+diffusion_s0.0            2        -0.493      +0.874invariant_conservation
+ar_s0.1                   2        +0.884      +0.920invariant_conservation
+flow_s0.1                 2        +0.721      +0.974invariant_conservation
+diffusion_s0.1            2        +0.702      +0.953invariant_conservation
+
+-> runs/probe_vs_behavior.json

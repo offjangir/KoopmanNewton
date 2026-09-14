@@ -1,0 +1,83 @@
+{
+  "H1_probe_nonidentifiable": "confirmed all domains+scales (probe flat/blind while behaviour spans full range)",
+  "H2_behavioral_learnability": "confirmed Kepler exponent -1.924+-0.020",
+  "H3_one_knob_threshold": {
+    "kepler": {
+      "0": 0.999,
+      ".01": 0.978,
+      ".05": 0.484,
+      ".1": 0.007
+    },
+    "pendulum": {
+      "0": 1.0,
+      ".01": 1.0,
+      ".05": 0.877,
+      ".1": -0.061
+    },
+    "note": "threshold at sigma~0.056=|dt^2 F|; generative degrade faster past threshold"
+  },
+  "H4_context_noise_lever": {
+    "note": "force-use flat ~0.98 at sigma=0 across ctx2->32; at sigma=0.1 recovers -0.44->0.94 as ctx grows (averaging). NOT a generator->Koopman switch."
+  },
+  "H5_generative_physicist_free": {
+    "kepler_sigma0": {
+      "ar": 0.999,
+      "flow": 0.997,
+      "diff": 0.997
+    },
+    "pendulum": {
+      "ar": 1.0,
+      "flow": 1.0,
+      "diff": 0.999
+    },
+    "rabi_u": {
+      "all": 0.98
+    },
+    "rel_u": {
+      "all": 0.996
+    }
+  },
+  "H6_universality": "confirmed 4 laws (Kepler,pendulum,rabi_u,rel_u): all learn generator at sigma=0",
+  "dt_identifiability": {
+    "0.05": {
+      "fr": 0.79,
+      "eps/sig": 0.74,
+      "exp": -1.86,
+      "verdict": "noise-lim"
+    },
+    "0.1": {
+      "fr": 0.988,
+      "exp": -1.97
+    },
+    "0.2": {
+      "fr": 0.999,
+      "exp": -1.92
+    },
+    "0.4": {
+      "fr": 1.0,
+      "exp": -1.74
+    }
+  },
+  "scale_invariance": {
+    "3.4M": {
+      "s0": 0.999,
+      "s01": 0.007
+    },
+    "25M": {
+      "s0": 0.999,
+      "s01": 0.015
+    },
+    "90M": {
+      "s0": 0.996,
+      "s01": 0.015
+    }
+  },
+  "figures": [
+    "FIG_H5b_factorial",
+    "FIG_H4_context_dial",
+    "FIG_dt_identifiability",
+    "FIG_H3_threshold",
+    "FIG_scale_invariance",
+    "FIG_four_laws"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "paradigm": "ar",
+  "domain": "harmonic",
+  "context": 10,
+  "trained_newton": 0.9999999999995574,
+  "trained_kepler": 0.9685408831418352,
+  "untrained_newton": 0.9999999999997167,
+  "untrained_kepler": 0.9185239078352677
+}

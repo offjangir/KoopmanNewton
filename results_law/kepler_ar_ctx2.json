@@ -1,0 +1,9 @@
+{
+  "paradigm": "ar",
+  "domain": "kepler",
+  "context": 2,
+  "trained_newton": 0.94343561296942,
+  "trained_kepler": 0.8920182144830658,
+  "untrained_newton": 0.8769643815970446,
+  "untrained_kepler": 0.7729909562132631
+}

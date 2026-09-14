@@ -1,0 +1,9 @@
+{
+  "paradigm": "ar",
+  "domain": "pendulum",
+  "context": 10,
+  "trained_newton": 0.9999999999997551,
+  "trained_kepler": 0.9839499231405797,
+  "untrained_newton": 0.999999999999629,
+  "untrained_kepler": 0.9814857237744078
+}

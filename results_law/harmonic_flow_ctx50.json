@@ -1,0 +1,9 @@
+{
+  "paradigm": "flow",
+  "domain": "harmonic",
+  "context": 50,
+  "trained_newton": 0.9999999999996596,
+  "trained_kepler": 0.9675509269048724,
+  "untrained_newton": 0.9999999999997092,
+  "untrained_kepler": -0.0017777818895539088
+}

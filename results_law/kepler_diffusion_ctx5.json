@@ -1,0 +1,9 @@
+{
+  "paradigm": "diffusion",
+  "domain": "kepler",
+  "context": 5,
+  "trained_newton": 0.8446756572423131,
+  "trained_kepler": 0.823521407871856,
+  "untrained_newton": 0.17136584980592295,
+  "untrained_kepler": 0.21288085399160905
+}

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Generated data and per-job output
+data_cache/
+configs/generated/
+results_gen/
+*.log
+slurm-*.out
+
+# Unpublished writeup
+paper/
+
+# Training runs: checkpoints and per-run plots stay local; keep the summary
+# figures/tables at the top of runs/ and each sweep's analysis output.
+runs/*
+!runs/*.png
+!runs/*.json
+!runs/*.md
+!runs/*/
+runs/*/*
+!runs/*/analysis.json
+!runs/*/analysis.txt
