@@ -1,0 +1,136 @@
+{
+ "domain": "double_pendulum",
+ "ok": true,
+ "n_per_split": 200,
+ "seed": 0,
+ "dt": 0.01,
+ "steps": 150,
+ "state_dim": 6,
+ "obs_dims": 6,
+ "observation": "full state",
+ "pos_vel_layout": false,
+ "ood_regimes": [],
+ "law": {
+  "varying_keys": [
+   "m1",
+   "m2",
+   "L1",
+   "L2",
+   "th1",
+   "th2",
+   "w1",
+   "w2"
+  ],
+  "start_state_keys": [
+   "th1",
+   "th2",
+   "w1",
+   "w2"
+  ],
+  "law_keys": [
+   "m1",
+   "m2",
+   "L1",
+   "L2"
+  ],
+  "classification": "law parameters vary too",
+  "source": "varying keys measured; start-state vs law split read from code"
+ },
+ "conservation": {
+  "train": {
+   "energy": {
+    "kind": "relative",
+    "median": 7.524913668183427e-10,
+    "max": 1.385328390574914e-05,
+    "abs_median": 1.5005158504610705e-09,
+    "abs_max": 2.191439055287958e-05,
+    "median_abs_initial_value": 2.253021805660727
+   }
+  },
+  "test": {
+   "energy": {
+    "kind": "relative",
+    "median": 6.573337959612551e-10,
+    "max": 1.7372030152746347e-05,
+    "abs_median": 1.2322491430016846e-09,
+    "abs_max": 5.2576463872355816e-05,
+    "median_abs_initial_value": 2.04178746778021
+   }
+  }
+ },
+ "expected_drift": {},
+ "code_note": "Energy drift does not get smaller with a 10 times smaller dt. The evidence is in logs/dp_check.out.",
+ "visibility": {
+  "train": {
+   "rms_step": 0.011652816020353602,
+   "rms_cv_residual": 0.0008679137557486763,
+   "per_feature_rms_cv_residual": [
+    0.00018981504637376537,
+    0.00015769222540071791,
+    0.0002738435512379108,
+    0.0002509926696864757,
+    0.0014288560992744774,
+    0.001509679360493524
+   ]
+  },
+  "test": {
+   "rms_step": 0.011520363642291375,
+   "rms_cv_residual": 0.0010862630501797068,
+   "per_feature_rms_cv_residual": [
+    0.0002052941992251336,
+    0.0001597865750760782,
+    0.0002568836246302567,
+    0.00021897928508334184,
+    0.0018118106931956323,
+    0.0019014541581188493
+   ]
+  }
+ },
+ "visibility_position_only": null,
+ "ctx_noise": 0.1,
+ "onestep_rms": {
+  "test": {
+   "cv": 0.0011087897097133675,
+   "ar2": 0.009268253990303399,
+   "ar8": 0.0038066002555754838,
+   "nn2": 0.006932189333921669,
+   "nn8": 0.00745856703293574
+  }
+ },
+ "rollout20_rms": {
+  "test": {
+   "cv": 0.04767609684026025,
+   "ar2": 0.11024026937391868,
+   "ar8": 0.050279039441727534,
+   "nn2": 0.06889180089515543,
+   "nn8": 0.07314804242838259
+  }
+ },
+ "rollout_starts_per_traj": 7,
+ "gen_seconds": {
+  "train": 1.3072336470941082,
+  "test": 1.3053721459582448
+ },
+ "gen_tries": {
+  "train": 200,
+  "test": 200
+ },
+ "baseline_seconds": 15.400716676958837,
+ "norm_mean": [
+  0.03509152171534792,
+  0.12000928201096214,
+  0.04465465236409421,
+  0.12071117835656447,
+  0.043540257457353015,
+  0.02129352198553281
+ ],
+ "norm_std": [
+  0.682548633443405,
+  0.7200670285110794,
+  0.6998607607927337,
+  0.7025898475240304,
+  0.8445368094820165,
+  0.9868345199802694
+ ],
+ "total_seconds": 18.930333954980597
+}

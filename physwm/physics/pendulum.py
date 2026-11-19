@@ -148,7 +148,7 @@ class DoublePendulumSimulator(Simulator):
     @staticmethod
     def _accel(th1, th2, w1, w2, p):
         m1, m2, L1, L2, g = p["m1"], p["m2"], p["L1"], p["L2"], p["g"]
-        d = th1 - th2
+        d = th2 - th1
         cd, sd = np.cos(d), np.sin(d)
         den = (m1 + m2) * L1 - m2 * L1 * cd * cd
         a1 = (m2 * L1 * w1 * w1 * sd * cd
