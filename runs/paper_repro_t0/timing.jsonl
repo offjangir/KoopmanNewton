@@ -1,0 +1,11 @@
+{"block_size": 1, "n_steps": 20001, "seconds": 1980.3428037166595, "device": "cpu"}
+{"block_size": 2, "n_steps": 20001, "seconds": 2759.190816640854, "device": "cpu"}
+{"block_size": 5, "n_steps": 20001, "seconds": 2880.394214630127, "device": "cpu"}
+{"block_size": 10, "n_steps": 20001, "seconds": 3250.0057895183563, "device": "cpu"}
+{"block_size": 20, "n_steps": 20001, "seconds": 3349.411678314209, "device": "cpu"}
+{"block_size": 50, "n_steps": 20001, "seconds": 4538.579139471054, "device": "cpu"}
+{"block_size": 60, "n_steps": 20001, "seconds": 4907.862858057022, "device": "cpu"}
+{"block_size": 80, "n_steps": 20001, "seconds": 5292.524474859238, "device": "cpu"}
+{"block_size": 90, "n_steps": 20001, "seconds": 6470.413463592529, "device": "cpu"}
+{"block_size": 100, "n_steps": 20001, "seconds": 7388.816414356232, "device": "cpu"}
+{"block_size": 70, "n_steps": 20001, "seconds": 7280.378459692001, "device": "cpu"}

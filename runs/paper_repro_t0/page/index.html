@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kepler Newton Reproduction</title>
+<style>
+:root { --bg:#ffffff; --fg:#1d1d1f; --muted:#5f6368; --line:#d9d9de; --head:#f3f4f6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#16171a; --fg:#e8e8ea; --muted:#a0a3a8; --line:#3a3c42; --head:#23252a; } }
+:root[data-theme="dark"] { --bg:#16171a; --fg:#e8e8ea; --muted:#a0a3a8; --line:#3a3c42; --head:#23252a; }
+body { background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, sans-serif; margin:0; padding:24px 16px; }
+main { max-width:1000px; margin:0 auto; }
+h1 { font-size:1.4rem; margin:0 0 12px; }
+p.top { margin:0 0 10px; }
+figure { margin:28px 0; }
+.pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:640px) { .pair { grid-template-columns:1fr; } }
+img { width:100%; height:auto; background:#fff; border:1px solid var(--line); }
+figcaption { color:var(--muted); font-size:0.9rem; margin-top:6px; }
+.wrap { overflow-x:auto; }
+table { border-collapse:collapse; font-size:0.85rem; white-space:nowrap; }
+th, td { border:1px solid var(--line); padding:4px 7px; text-align:right; }
+th { background:var(--head); }
+a { color:inherit; }
+</style>
+</head>
+<body>
+<main>
+<h1>Kepler to Newton: context-length reproduction</h1>
+<p class="top">This test runs the unchanged code of arXiv 2602.06923 (Fig. 6) for 11 context lengths from 1 to 100, with one seed, on CPU nodes.</p>
+<p class="top">Linear-probe R² for the gravity force is high at short context lengths and lower at long ones, and R² for the orbit elements increases with context length.</p>
+<p class="top">The Kepler and Newton scores are 0.957 and 0.999 at context length 2 (paper 0.911 and 1.000), and 0.999 and 0.761 at context length 100 (paper 0.999 and 0.927).</p>
+
+<figure>
+<div class="wrap"><table>
+<tr><th>context length</th><th>Kepler score (ours)</th><th>Kepler score (paper)</th><th>Newton score (ours)</th><th>Newton score (paper)</th></tr>
+<tr><td>1</td><td>0.496</td><td>-</td><td>1.000</td><td>1.000</td></tr>
+<tr><td>2</td><td>0.957</td><td>0.911 (read from image)</td><td>0.999</td><td>1.000</td></tr>
+<tr><td>5</td><td>0.983</td><td>0.974 (read from image)</td><td>0.990</td><td>0.996</td></tr>
+<tr><td>10</td><td>0.984</td><td>0.974 (read from image)</td><td>0.983</td><td>0.956</td></tr>
+<tr><td>20</td><td>0.975</td><td>0.983 (read from image)</td><td>0.952</td><td>0.927</td></tr>
+<tr><td>50</td><td>0.991</td><td>0.993 (read from image)</td><td>0.890</td><td>0.918</td></tr>
+<tr><td>60</td><td>0.994</td><td>-</td><td>0.940</td><td>-</td></tr>
+<tr><td>70</td><td>0.992</td><td>-</td><td>0.874</td><td>-</td></tr>
+<tr><td>80</td><td>0.995</td><td>-</td><td>0.950</td><td>-</td></tr>
+<tr><td>90</td><td>0.994</td><td>-</td><td>0.938</td><td>-</td></tr>
+<tr><td>100</td><td>0.999</td><td>0.999 (read from image)</td><td>0.761</td><td>0.927</td></tr>
+</table></div>
+<figcaption>Kepler score is the mean best-layer R² of a, b, LRL x and LRL y. Newton score is the mean of F magnitude, Fx and Fy. The pixel-reading error is 0.0003 or less.</figcaption>
+</figure>
+
+<figure>
+<img src="img/scores_ours_and_paper.png" alt="Kepler and Newton scores of our run and of the paper against context length">
+<figcaption>Both scores for all 11 runs (filled circles) and the paper values (open squares).</figcaption>
+</figure>
+
+<figure>
+<div class="pair"><img src="img/paper_kepler_newton.png" alt="Paper notebook: Keplerian and Newtonian scores against context length"><img src="img/ours_kepler_newton.png" alt="Our run: Keplerian and Newtonian scores against context length"></div>
+<figcaption>Left: the stored output of the paper notebook. Right: the same notebook cell on our results. The y range of the notebook cuts off our Newtonian score at 50 and 100.</figcaption>
+</figure>
+
+<figure>
+<div class="pair"><img src="img/paper_newton.png" alt="Paper notebook: force probe R2"><img src="img/ours_newton.png" alt="Our run: force probe R2"></div>
+<figcaption>Best force-probe R² over all layers, paper notebook (left) and our run (right).</figcaption>
+</figure>
+
+<figure>
+<div class="pair"><img src="img/paper_kepler.png" alt="Paper notebook: orbit element probe R2"><img src="img/ours_kepler.png" alt="Our run: orbit element probe R2"></div>
+<figcaption>Best orbit-element probe R² over all layers, paper notebook (left) and our run (right).</figcaption>
+</figure>
+
+<figure>
+<div class="pair"><img src="img/paper_error.png" alt="Paper notebook: rollout error"><img src="img/ours_error.png" alt="Our run: rollout error"></div>
+<figcaption>Mean distance error over 50 predicted steps on 500 test orbits, paper notebook (left) and our run (right).</figcaption>
+</figure>
+
+<figure>
+<img src="img/summary_vs_block.png" alt="Best probe R2 against context length for all 11 runs">
+<figcaption>All 11 runs, including 60 to 90. Crosses are the force values that the paper notebook prints.</figcaption>
+</figure>
+
+<figure>
+<div class="wrap"><table>
+<tr><th>context length</th><th>F magnitude</th><th>paper</th><th>Fx</th><th>paper</th><th>Fy</th><th>paper</th><th>a</th><th>b</th><th>LRL x</th><th>LRL y</th><th>e</th><th>test error</th><th>paper</th></tr>
+<tr><td>1</td><td>0.9999</td><td>0.9999</td><td>0.9999</td><td>0.9998</td><td>0.9998</td><td>0.9995</td><td>0.6352</td><td>0.5182</td><td>0.4318</td><td>0.3973</td><td>0.1806</td><td>1.305</td><td>1.250</td></tr>
+<tr><td>2</td><td>0.9998</td><td>1.0000</td><td>0.9988</td><td>0.9999</td><td>0.9992</td><td>0.9997</td><td>0.8824</td><td>0.9761</td><td>0.9837</td><td>0.9863</td><td>0.7958</td><td>1.413</td><td>1.464</td></tr>
+<tr><td>5</td><td>0.9947</td><td>0.9985</td><td>0.9935</td><td>0.9942</td><td>0.9817</td><td>0.9952</td><td>0.9659</td><td>0.9878</td><td>0.9870</td><td>0.9917</td><td>0.8745</td><td>1.386</td><td>1.264</td></tr>
+<tr><td>10</td><td>0.9891</td><td>0.9787</td><td>0.9722</td><td>0.9493</td><td>0.9870</td><td>0.9412</td><td>0.9764</td><td>0.9819</td><td>0.9882</td><td>0.9890</td><td>0.9017</td><td>0.853</td><td>0.883</td></tr>
+<tr><td>20</td><td>0.9564</td><td>0.9572</td><td>0.9495</td><td>0.9264</td><td>0.9484</td><td>0.8963</td><td>0.9694</td><td>0.9619</td><td>0.9829</td><td>0.9861</td><td>0.8951</td><td>0.257</td><td>0.252</td></tr>
+<tr><td>50</td><td>0.9443</td><td>0.9530</td><td>0.8687</td><td>0.9127</td><td>0.8576</td><td>0.8897</td><td>0.9899</td><td>0.9877</td><td>0.9936</td><td>0.9940</td><td>0.9472</td><td>0.117</td><td>0.153</td></tr>
+<tr><td>60</td><td>0.9708</td><td>-</td><td>0.9362</td><td>-</td><td>0.9129</td><td>-</td><td>0.9941</td><td>0.9950</td><td>0.9944</td><td>0.9943</td><td>0.9208</td><td>1.098</td><td>-</td></tr>
+<tr><td>70</td><td>0.9106</td><td>-</td><td>0.8677</td><td>-</td><td>0.8430</td><td>-</td><td>0.9913</td><td>0.9904</td><td>0.9937</td><td>0.9933</td><td>0.9400</td><td>1.298</td><td>-</td></tr>
+<tr><td>80</td><td>0.9758</td><td>-</td><td>0.9263</td><td>-</td><td>0.9477</td><td>-</td><td>0.9917</td><td>0.9953</td><td>0.9958</td><td>0.9963</td><td>0.9476</td><td>1.296</td><td>-</td></tr>
+<tr><td>90</td><td>0.9766</td><td>-</td><td>0.9121</td><td>-</td><td>0.9247</td><td>-</td><td>0.9903</td><td>0.9942</td><td>0.9956</td><td>0.9950</td><td>0.9381</td><td>1.433</td><td>-</td></tr>
+<tr><td>100</td><td>0.8935</td><td>0.9596</td><td>0.7471</td><td>0.9057</td><td>0.6426</td><td>0.9161</td><td>0.9997</td><td>0.9991</td><td>0.9993</td><td>0.9993</td><td>0.9885</td><td>0.070</td><td>0.109</td></tr>
+</table></div>
+<figcaption>Best R² over layers at the last position, at step 20001. The paper column comes from the stored notebook text. Per-layer values: <a href="probe_r2_per_layer.csv">probe_r2_per_layer.csv</a>.</figcaption>
+</figure>
+</main>
+</body>
+</html>
