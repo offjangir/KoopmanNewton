@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kepler Newton New Orbits</title>
+<style>
+:root { --bg:#ffffff; --fg:#1d1d1f; --muted:#5f6368; --line:#d9d9de; --head:#f3f4f6; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#16171a; --fg:#e8e8ea; --muted:#a0a3a8; --line:#3a3c42; --head:#23252a; } }
+:root[data-theme="dark"] { --bg:#16171a; --fg:#e8e8ea; --muted:#a0a3a8; --line:#3a3c42; --head:#23252a; }
+body { background:var(--bg); color:var(--fg); font:16px/1.5 system-ui, sans-serif; margin:0; padding:24px 16px; }
+main { max-width:1100px; margin:0 auto; }
+h1 { font-size:1.4rem; margin:0 0 12px; }
+h2 { font-size:1.05rem; margin:24px 0 8px; }
+p.top { margin:0 0 10px; }
+figure { margin:24px 0; }
+img { width:100%; height:auto; background:#fff; border:1px solid var(--line); }
+figcaption { color:var(--muted); font-size:0.9rem; margin-top:6px; }
+.wrap { overflow-x:auto; }
+table { border-collapse:collapse; font-size:0.85rem; }
+th, td { border:1px solid var(--line); padding:4px 7px; text-align:right; }
+th { background:var(--head); text-align:center; font-weight:600; }
+a { color:inherit; }
+</style>
+</head>
+<body>
+<main>
+<h1>Kepler to Newton models on new orbits</h1>
+<p class="top">This test scores the 11 context-length models of the paper reproduction on new orbits, with no new training.</p>
+<p class="top">Force probes that are fitted and scored on different orbits give lower scores than the paper's in-sample probes, most at long context lengths and on far orbits.</p>
+<p class="top">The Newton score at context lengths 2 and 100 is 0.999 and 0.748 in-sample, and 0.972 and 0.437 on held-out orbits from the paper's range.</p>
+
+<h2>Kepler score</h2>
+<figure>
+<div class="wrap"><table>
+<tr><th rowspan="2">context length</th><th>training orbits</th><th>held-out orbits from the paper's range (eccentricity 0-0.8, semi-major axis 0.5-2)</th><th colspan="2">wider orbits outside the paper's range (eccentricity up to 0.9, semi-major axis up to 3)</th><th colspan="3">held-out far orbits (eccentricity 0.9-0.95, or semi-major axis 3-4)</th></tr>
+<tr><th>in-sample, the paper's way</th><th>probes fitted on training orbits</th><th>in-sample</th><th>fitted and scored on different orbits</th><th>probes fitted on training orbits</th><th>in-sample</th><th>fitted and scored on different orbits</th></tr>
+<tr><td>1</td><td>0.476</td><td>0.410</td><td>0.490</td><td>0.413</td><td>0.269</td><td>0.546</td><td>0.483</td></tr>
+<tr><td>2</td><td>0.963</td><td>0.849</td><td>0.957</td><td>0.638</td><td>0.196</td><td>0.960</td><td>0.583</td></tr>
+<tr><td>5</td><td>0.981</td><td>0.911</td><td>0.975</td><td>0.811</td><td>0.346</td><td>0.976</td><td>0.846</td></tr>
+<tr><td>10</td><td>0.984</td><td>0.958</td><td>0.972</td><td>0.849</td><td>0.515</td><td>0.971</td><td>0.864</td></tr>
+<tr><td>20</td><td>0.973</td><td>0.957</td><td>0.976</td><td>0.863</td><td>0.624</td><td>0.980</td><td>0.904</td></tr>
+<tr><td>50</td><td>0.991</td><td>0.985</td><td>0.995</td><td>0.985</td><td>0.756</td><td>0.993</td><td>0.987</td></tr>
+<tr><td>60</td><td>0.994</td><td>0.990</td><td>0.996</td><td>0.981</td><td>0.712</td><td>0.996</td><td>0.991</td></tr>
+<tr><td>70</td><td>0.993</td><td>0.989</td><td>0.995</td><td>0.988</td><td>0.709</td><td>0.994</td><td>0.988</td></tr>
+<tr><td>80</td><td>0.995</td><td>0.991</td><td>0.995</td><td>0.985</td><td>0.718</td><td>0.998</td><td>0.996</td></tr>
+<tr><td>90</td><td>0.994</td><td>0.989</td><td>0.996</td><td>0.986</td><td>0.681</td><td>0.998</td><td>0.997</td></tr>
+<tr><td>100</td><td>0.999</td><td>0.999</td><td>0.999</td><td>0.999</td><td>0.739</td><td>0.999</td><td>0.999</td></tr>
+</table></div>
+<figcaption>Mean of the best-layer R² of a, b, LRL x and LRL y. Each probe uses 1000 windows at the last position.</figcaption>
+</figure>
+
+<h2>Newton score</h2>
+<figure>
+<div class="wrap"><table>
+<tr><th rowspan="2">context length</th><th>training orbits</th><th>held-out orbits from the paper's range (eccentricity 0-0.8, semi-major axis 0.5-2)</th><th colspan="2">wider orbits outside the paper's range (eccentricity up to 0.9, semi-major axis up to 3)</th><th colspan="3">held-out far orbits (eccentricity 0.9-0.95, or semi-major axis 3-4)</th></tr>
+<tr><th>in-sample, the paper's way</th><th>probes fitted on training orbits</th><th>in-sample</th><th>fitted and scored on different orbits</th><th>probes fitted on training orbits</th><th>in-sample</th><th>fitted and scored on different orbits</th></tr>
+<tr><td>1</td><td>1.000</td><td>1.000</td><td>1.000</td><td>0.982</td><td>0.768</td><td>1.000</td><td>0.570</td></tr>
+<tr><td>2</td><td>0.999</td><td>0.972</td><td>1.000</td><td>0.324</td><td>0.581</td><td>0.998</td><td>0.725</td></tr>
+<tr><td>5</td><td>0.978</td><td>0.774</td><td>0.998</td><td>0.204</td><td>0.078</td><td>0.922</td><td>0.201</td></tr>
+<tr><td>10</td><td>0.985</td><td>0.865</td><td>0.998</td><td>0.002</td><td>0.056</td><td>0.890</td><td>0.222</td></tr>
+<tr><td>20</td><td>0.957</td><td>0.786</td><td>0.997</td><td>0.190</td><td>0.003</td><td>0.930</td><td>0.110</td></tr>
+<tr><td>50</td><td>0.913</td><td>0.596</td><td>0.943</td><td>0.188</td><td>0.042</td><td>0.899</td><td>0.144</td></tr>
+<tr><td>60</td><td>0.899</td><td>0.701</td><td>0.895</td><td>0.268</td><td>0.027</td><td>0.950</td><td>0.327</td></tr>
+<tr><td>70</td><td>0.873</td><td>0.616</td><td>0.957</td><td>0.322</td><td>0.053</td><td>0.766</td><td>0.042</td></tr>
+<tr><td>80</td><td>0.954</td><td>0.817</td><td>0.916</td><td>0.138</td><td>0.056</td><td>0.781</td><td>0.053</td></tr>
+<tr><td>90</td><td>0.942</td><td>0.472</td><td>0.818</td><td>0.252</td><td>0.021</td><td>0.839</td><td>0.093</td></tr>
+<tr><td>100</td><td>0.748</td><td>0.437</td><td>0.871</td><td>0.287</td><td>0.017</td><td>0.820</td><td>-0.012</td></tr>
+</table></div>
+<figcaption>Mean of the best-layer R² of F magnitude, Fx and Fy. "Different orbits" means that no orbit is in both the fit and the score windows.</figcaption>
+</figure>
+
+<h2>Rollout error</h2>
+<figure>
+<div class="wrap"><table>
+<tr><th>context length</th><th>training orbits</th><th>held-out orbits from the paper's range</th><th>wider orbits outside the paper's range</th><th>held-out far orbits</th></tr>
+<tr><td>1</td><td>1.285</td><td>1.305</td><td>1.226</td><td>2.180</td></tr>
+<tr><td>2</td><td>1.391</td><td>1.417</td><td>1.179</td><td>1.929</td></tr>
+<tr><td>5</td><td>1.312</td><td>1.335</td><td>1.175</td><td>1.911</td></tr>
+<tr><td>10</td><td>0.873</td><td>0.869</td><td>1.221</td><td>1.915</td></tr>
+<tr><td>20</td><td>0.258</td><td>0.262</td><td>1.446</td><td>2.271</td></tr>
+<tr><td>50</td><td>0.118</td><td>0.118</td><td>1.284</td><td>2.071</td></tr>
+<tr><td>60</td><td>1.090</td><td>1.092</td><td>2.533</td><td>2.753</td></tr>
+<tr><td>70</td><td>1.282</td><td>1.286</td><td>2.620</td><td>2.698</td></tr>
+<tr><td>80</td><td>1.286</td><td>1.287</td><td>2.839</td><td>2.958</td></tr>
+<tr><td>90</td><td>1.402</td><td>1.410</td><td>3.005</td><td>2.882</td></tr>
+<tr><td>100</td><td>0.071</td><td>0.071</td><td>1.175</td><td>2.263</td></tr>
+</table></div>
+<figcaption>Mean distance error over 50 predicted steps from 50 known points, on 2000 orbits, with the paper's function.</figcaption>
+</figure>
+
+<figure>
+<img src="img/kepler_score_vs_context.png" alt="Kepler score against context length for each probe step and orbit set">
+<figcaption>Kepler score against context length, one line for each probe step and orbit set.</figcaption>
+</figure>
+
+<figure>
+<img src="img/newton_score_vs_context.png" alt="Newton score against context length for each probe step and orbit set">
+<figcaption>Newton score against context length, one line for each probe step and orbit set.</figcaption>
+</figure>
+
+<figure>
+<img src="img/errors_vs_context.png" alt="Rollout error and next-step error against context length">
+<figcaption>Rollout and next-step errors. Of the positions, 15% of the wider orbits and 35% of the far orbits are outside the x and y range of the training data.</figcaption>
+</figure>
+
+<figure>
+<img src="img/example_rollouts_training.png" alt="Example rollouts on six training orbits for context lengths 2 and 100">
+<figcaption>Six training orbits, three with eccentricity above 0.6 and three below 0.3. The top row is context length 2 and the bottom row is context length 100.</figcaption>
+</figure>
+
+<figure>
+<img src="img/example_rollouts_far_marked.png" alt="Example rollouts on six held-out far orbits for context lengths 2 and 100">
+<figcaption>The same six held-out far orbits as before, with the same marks. The top row is context length 2 and the bottom row is context length 100.</figcaption>
+</figure>
+
+<p><a href="scores.csv">scores.csv</a> (all steps, with the two parts of the far orbits) · <a href="probe_r2_per_layer.csv">probe_r2_per_layer.csv</a> · <a href="errors.csv">errors.csv</a></p>
+</main>
+</body>
+</html>
