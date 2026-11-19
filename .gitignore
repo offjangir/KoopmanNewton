@@ -25,3 +25,19 @@ runs/*
 runs/*/*
 !runs/*/analysis.json
 !runs/*/analysis.txt
+
+# Local agent steering (not shared)
+AGENTS.md
+CLAUDE.md
+.claude/
+log/
+
+# Law audit and paper reproduction: keep the summaries and the result pages
+!runs/law_audit/summary.md
+!runs/law_audit/audit.json
+!runs/law_audit/page/
+!runs/law_audit_double_pendulum_fix/double_pendulum/
+!runs/paper_repro_t0/environment_versions.txt
+!runs/paper_repro_t0/timing.jsonl
+!runs/paper_repro_t0/page/
+!runs/paper_repro_t1/page/
